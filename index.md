@@ -6,4 +6,4 @@ title: Dominick Trusko's 314 Homepage
 Welcome to my website, assignments are listed below
 
 ### Website Contents
-[Block Diagram](blockdiagram)
+[Block Diagram](blockdiagram.md)
