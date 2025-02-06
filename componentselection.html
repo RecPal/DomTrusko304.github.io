@@ -17,8 +17,8 @@
       font-weight: bolder
     }
     /* Header formatting */
-    h1 { font-size: 2em; color: #ffffff; }
-    h2 { font-size: 1.75em; color: #ffffff; }
+    h1 { font-size: 3em; color: #ffffff; }
+    h2 { font-size: 2.5em; color: #ffffff; }
     h3 { font-size: 1.5em; color: #ffffff; }
     /* Paragraph Styling */
     p {
@@ -73,6 +73,20 @@
         background-repeat: no-repeat;
         display: inline-block;
     }
+    /* Dropdown styling */
+    .dropdown {
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      color: rgb(255, 255, 255);
+      text-decoration: underline;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    /* Dropdown hidden styling */
+    .hidden {
+      display: none;
+    }
 
   </style>
 </head>
@@ -89,13 +103,18 @@
     <!-- Line break to make page easier to read -->
     <hr>
 
-    <h2>Microcontroller Selection</h2>
-    <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider myself rather skilled
-        at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of potential components due to 
-        the relative age of C compared to other available languages, as well as its use within most major microcontroller brands.
-    </p>
+    <h2>Major Hardware Selection</h2>
 
-    <!-- Major Component Table -->
+    <!-- Microcontroller Dropdown -->
+     <div class = "dropdown" onclick="toggleTable('Microcontroller')">Microcontroller Selection</div>
+
+     <div id="Microcontroller" class="hidden"> 
+
+        <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider myself rather skilled
+            at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of potential components due to 
+            the relative age of C compared to other available languages, as well as its use within most major microcontroller brands.
+        </p>
+
      <table>
         <thead>
             <tr>
@@ -161,6 +180,21 @@
             </tr>
         </tbody>
      </table>
+
+     <hr>
+    </div>
+
+     <!-- Toggle dropdown script -->
+     <script>
+        function toggleTable(tableId) {
+          var table = document.getElementById(tableId);
+          if (table.classList.contains("hidden")) {
+            table.classList.remove("hidden");
+          } else {
+            table.classList.add("hidden");
+          }
+        }
+      </script>
 </body>
 
 </html>
