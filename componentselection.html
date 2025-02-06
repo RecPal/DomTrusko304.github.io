@@ -22,6 +22,10 @@
         h1 {
             font-size: 3em;
             color: #ffffff;
+            background-color: black;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
         }
 
         h2 {
@@ -32,13 +36,24 @@
         h3 {
             font-size: 1.5em;
             color: #000000;
+            background-color: rgb(255, 255, 255);
+            display: inline-block;
+            padding: 7px;
+            border-radius: 10px;
         }
 
         /* Top paragraph styling */
         pt {
             font-size: 1em;
-            line-height: 1.6;
             margin-bottom: 1em;
+            padding: 10px;
+            text-spacing-trim: 5px;
+            line-height: 2;
+            background-color: white;
+            color: black;
+            width: calc(100%-20px);
+            display: block;
+            border-radius: 10px;
         }
 
         /* Paragraph Styling */
@@ -47,6 +62,9 @@
             line-height: 1.6;
             margin-bottom: 1em;
             color: black;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            padding: 5px;
         }
 
         /* Table Styling */
@@ -137,6 +155,16 @@
             text-decoration: underline;
             display: inline-block;
             margin-bottom: 10px;
+            width: calc(100%-20px);
+            margin: 5px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
 
         /* Dropdown hidden styling */
@@ -158,305 +186,432 @@
     <h1>Individual Component Selection</h1>
     <pt> This page logs my individual component selection. Included are both my considered options for all major
         subsystems,
-        as well as my justification for chosing individual supporting components for my hardware.</p>
+        as well as my justification for chosing individual supporting components for my hardware.
+        Due to project requirements, through-hole components will not be considered for selection.</pt>
 
-        <pt>Due to project requirements, through-hole components will not be considered for selection.</p>
+    <!-- Line break to make page easier to read -->
+    <hr>
 
-            <!-- Line break to make page easier to read -->
-            <hr>
+    <h2>Major Hardware Selection</h2>
 
-            <h2>Major Hardware Selection</h2>
+    <!-- Microcontroller Dropdown -->
+    <div class="dropdown-container" id="microcontrollerContainer">
 
-            <!-- Microcontroller Dropdown -->
-            <div class="dropdown-container" id="microcontrollerContainer">
+        <div class="dropdown" onclick="toggleTable('Microcontroller')">Microcontroller Selection</div>
 
-                <div class="dropdown" onclick="toggleTable('Microcontroller')">Microcontroller Selection</div>
+        <div id="Microcontroller" class="hidden">
 
-                <div id="Microcontroller" class="hidden">
+            <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider
+                myself
+                rather skilled
+                at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of
+                potential
+                components due to
+                the relative age of C compared to other available languages, as well as its use within most
+                major
+                microcontroller brands.
+            </p>
 
-                    <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider
-                        myself
-                        rather skilled
-                        at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of
-                        potential
-                        components due to
-                        the relative age of C compared to other available languages, as well as its use within most
-                        major
-                        microcontroller brands.
-                    </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                        <th>Hyperlink</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PIC18F47Q10 TQFP/44</td>
+                        <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller" class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Familiarity with programming interface</li>
+                                <li>Inexpensive</li>
+                                <li>Plentiful documentation</li>
+                                <li>Teaching-team support</li>
+                                <li>Likely to be popular amongst students (Better community support)</li>
+                                <li>Higher internal clock (64MHz)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Overkill given the project requirements</li>
+                                <li>Restricted access to python libraries without manual labor</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47Q10-I-PT/10187786">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ATMEGA328PB-MU</td>
+                        <td><img src="media/Component_Selection/atmel.bmp" alt="PIC Microcontroller"
+                                class="small-image"></td>
+                        <td>
+                            <ul>
+                                <li>Used regularly at my workplace for production systems</li>
+                                <li>Mildly Inexpensive</li>
+                                <li>Plentiful documentation</li>
+                                <li>Readily accepts Arduino libraries</li>
+                                <li>Reduced power consumption</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Overkill given the project requirements</li>
+                                <li>Slower internal clock (20MHz)</li>
+                                <li>Requires reflow oven for heatsync</li>
+                                <li>Form factor makes soldering more difficult</li>
+                                <li>Requires an AVR programmer</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA328PB-MU/5638814">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ATTINY202-SSFR</td>
+                        <td><img src="media/Component_Selection/MiniAVR.bmp" alt="MiniAVR Microcontroller"
+                                class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Extremely small</li>
+                                <li>Extremely cheap</li>
+                                <li>Programmed using MPLab</li>
+                                <li>Few pins to solder</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Requires multiplexing for input/outputs</li>
+                                <li>Very slow internal oscillator (16MHz)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY202-SSFR/9554943">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Image</th>
-                                <th>Advantages</th>
-                                <th>Disadvantages</th>
-                                <th>Hyperlink</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PIC18F47Q10 TQFP/44</td>
-                                <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Familiarity with programming interface</li>
-                                        <li>Inexpensive</li>
-                                        <li>Plentiful documentation</li>
-                                        <li>Teaching-team support</li>
-                                        <li>Likely to be popular amongst students (Better community support)</li>
-                                        <li>Higher internal clock (64MHz)</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Overkill given the project requirements</li>
-                                        <li>Restricted access to python libraries without manual labor</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47Q10-I-PT/10187786">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ATMEGA328PB-MU</td>
-                                <td><img src="media/Component_Selection/atmel.bmp" alt="PIC Microcontroller"
-                                        class="small-image"></td>
-                                <td>
-                                    <ul>
-                                        <li>Used regularly at my workplace for production systems</li>
-                                        <li>Mildly Inexpensive</li>
-                                        <li>Plentiful documentation</li>
-                                        <li>Readily accepts Arduino libraries</li>
-                                        <li>Reduced power consumption</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Overkill given the project requirements</li>
-                                        <li>Slower internal clock (20MHz)</li>
-                                        <li>Requires reflow oven for heatsync</li>
-                                        <li>Form factor makes soldering more difficult</li>
-                                        <li>Requires an AVR programmer</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/microchip-technology/ATMEGA328PB-MU/5638814">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ATTINY202-SSFR</td>
-                                <td><img src="media/Component_Selection/MiniAVR.bmp" alt="MiniAVR Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Extremely small</li>
-                                        <li>Extremely cheap</li>
-                                        <li>Programmed using MPLab</li>
-                                        <li>Few pins to solder</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Requires multiplexing for input/outputs</li>
-                                        <li>Very slow internal oscillator (16MHz)</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY202-SSFR/9554943">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <h3> My Selection </h3>
 
-                    <h3> My Selection </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Justification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PIC18F47Q10 TQFP/44</td>
+                        <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller" class="small-image">
+                        </td>
+                        <td>Project scope will likely be defined by my ability to integrate other systems
+                            with the microcontroller
+                            , availability of information, both provided and sourced, will be integral to
+                            final system functionality.
+                            Other students using this microcontroller will give access to a wide knowledge
+                            base, and the labs we do
+                            leading up to the final project will help develop my skills with this specific
+                            controller
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Image</th>
-                                <th>Justification</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PIC18F47Q10 TQFP/44</td>
-                                <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>Project scope will likely be defined by my ability to integrate other systems
-                                    with the microcontroller
-                                    , availability of information, both provided and sourced, will be integral to
-                                    final system functionality.
-                                    Other students using this microcontroller will give access to a wide knowledge
-                                    base, and the labs we do
-                                    leading up to the final project will help develop my skills with this specific
-                                    controller
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </div>
+    </div>
 
-                </div>
-            </div>
+    <!-- Regulator Dropdown -->
+    <div class="dropdown-container-alt" id="powerRegulatorContainer">
 
-            <!-- Regulator Dropdown -->
-            <div class="dropdown-container-alt" id="powerRegulatorContainer">
+        <div class="dropdown" onclick="toggleTable('Power Regulator')">Power Regulator</div>
 
-                <div class="dropdown" onclick="toggleTable('Power Regulator')">Power Regulator</div>
+        <div id="Power Regulator" class="hidden">
 
-                <div id="Power Regulator" class="hidden">
+            <p>For power regulator selection, I am prioritizing ease of use and minimal support components.
+                This will maximize the time I have to work on more interesting subsystems, and reduce the risk
+                of component failure. Ideally a fixed-output regulator for ease-of-use. It also must be capable of
+                producing the power required to drive the microcontroller and motor driver logic circuit.
+            </p>
 
-                    <p>For power regulator selection, I am prioritizing ease of use and minimal support components. 
-                        This will maximize the time I have to work on more interesting subsystems, and reduce the risk
-                        of component failure. Ideally a fixed-output regulator for ease-of-use. It also must be capable of 
-                        producing the power required to drive the microcontroller and motor driver logic circuit.
-                    </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                        <th>Hyperlink</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LM2594HVMX-3.3/NOPB</td>
+                        <td><img src="media/Component_Selection/TIRegulator.bmp" alt="TI Regulator" class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Reliable</li>
+                                <li>Used through-hole version in previous course</li>
+                                <li>Minimal supporting hardware</li>
+                                <li>Fixed output at microcontroller voltage</li>
+                                <li>Output current not significantly higher than required</li>
+                                <li>Excellent documentation and customer support</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Significantly more expensive than alternatives</li>
+                                <li>Many NC Pins contribute to footprint, but not functionality</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/texas-instruments/LM2594HVMX-3-3-NOPB/366821">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>MC34063ABD-TR</td>
+                        <td><img src="media/Component_Selection/STRegulator.bmp" alt="STRegulator" class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Used regularly at my workplace for production systems</li>
+                                <li>Inexpensive</li>
+                                <li>Variable voltage output</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Capable of providing far higher current than required</li>
+                                <li>Requires extra support hardware for desired voltage</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/stmicroelectronics/MC34063ABD-TR/1038906">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>MCP1603T-330I/OS</td>
+                        <td><img src="media/Component_Selection/miniRegulator.bmp" alt="Mini-Regulator"
+                                class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Extremely small</li>
+                                <li>Very few pins to solder</li>
+                                <li>Very little external support hardware</li>
+                                <li>Output amperage only 150% required</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Marginally more expensive than alternatives</li>
+                                <li>Maximum voltage input only 5.5V</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/microchip-technology/MCP1603T-330I-OS/1098431">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Image</th>
-                                <th>Advantages</th>
-                                <th>Disadvantages</th>
-                                <th>Hyperlink</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PIC18F47Q10 TQFP/44</td>
-                                <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Familiarity with programming interface</li>
-                                        <li>Inexpensive</li>
-                                        <li>Plentiful documentation</li>
-                                        <li>Teaching-team support</li>
-                                        <li>Likely to be popular amongst students (Better community support)</li>
-                                        <li>Higher internal clock (64MHz)</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Overkill given the project requirements</li>
-                                        <li>Restricted access to python libraries without manual labor</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47Q10-I-PT/10187786">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>MC34063ABD-TR</td>
-                                <td><img src="media/Component_Selection/STRegulator.bmp" alt="STRegulator"
-                                        class="small-image"></td>
-                                <td>
-                                    <ul>
-                                        <li>Used regularly at my workplace for production systems</li>
-                                        <li>Inexpensive</li>
-                                        <li>Variable voltage output</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Capable of providing far higher current than required</li>
-                                        <li>Requires extra support hardware for desired voltage</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/stmicroelectronics/MC34063ABD-TR/1038906">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>ATTINY202-SSFR</td>
-                                <td><img src="media/Component_Selection/MiniAVR.bmp" alt="MiniAVR Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Extremely small</li>
-                                        <li>Extremely cheap</li>
-                                        <li>Programmed using MPLab</li>
-                                        <li>Few pins to solder</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li>Requires multiplexing for input/outputs</li>
-                                        <li>Very slow internal oscillator (16MHz)</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <a
-                                        href="https://www.digikey.com/en/products/detail/microchip-technology/ATTINY202-SSFR/9554943">
-                                        <div class="digikey-link"></div>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <h3> My Selection </h3>
 
-                    <h3> My Selection </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Justification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LM2594HVMX-3.3/NOPB</td>
+                        <td><img src="media/Component_Selection/TIRegulator.bmp" alt="TI Regulator" class="small-image">
+                        </td>
+                        <td>Component familiarity combined with access to the customer support line offsets the relative
+                            cost difference.
+                            While the other buck converters are ~$1, this one sits at ~$4. While that is a major jump, a
+                            reliable power
+                            supply is the backbone of a functional project. Cheaping out in this department leaves me
+                            open to far more
+                            potential problems than any other subsystem as it can lead to cascading hardware failures.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Component</th>
-                                <th>Image</th>
-                                <th>Justification</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PIC18F47Q10 TQFP/44</td>
-                                <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller"
-                                        class="small-image">
-                                </td>
-                                <td>Project scope will likely be defined by my ability to integrate other systems
-                                    with the microcontroller
-                                    , availability of information, both provided and sourced, will be integral to
-                                    final system functionality.
-                                    Other students using this microcontroller will give access to a wide knowledge
-                                    base, and the labs we do
-                                    leading up to the final project will help develop my skills with this specific
-                                    controller
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <!-- Motor Driver Dropdown -->
+    <div class="dropdown-container" id="motordriverContainer">
 
-                </div>
+        <div class="dropdown" onclick="toggleTable('Motordriver')">Motor Driver Selection</div>
 
-            <!-- Toggle dropdown script -->
-            <script>
-                function toggleTable(tableId) {
-                    var table = document.getElementById(tableId);
-                    table.classList.toggle("show");
-                }
-            </script>
+        <div id="Motordriver" class="hidden">
+
+            <p>For motor driver selection, I appear to be severely limited. The primary reason being that many of these motor drivers come
+                pre-mounted onto daughter-boards, which require justification to use (As per the project requirements). Ideally the control
+                logic is at the same voltage as the microcontroller. It also requires control over a serial communication interface, which
+                doesn't seem like a difficult task, but it is actually rather difficult. Many allow tuning properties, such as acceleration
+                speed over a serial interface, but operate using a pulse-step system.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Advantages</th>
+                        <th>Disadvantages</th>
+                        <th>Hyperlink</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>L6470H</td>
+                        <td><img src="media/Component_Selection/l6479h.bmp" alt="MotorDriver" class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Same logic-voltage as microcontroller</li>
+                                <li>Relatively-inexpensive</li>
+                                <li>Precision control over SPI</li>
+                                <li>Plenty of configuration options</li>
+                                <li>Backup systems if serial communication fails</li>
+                                <li>External clock support (Can be synced with microcontroller)</li>
+                                <li>Error pin allows diagnostics in case of serial communication failure</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Definitely overkill for the given application</li>
+                                <li>Requires a lot of support hardware to utilize all functions</li>
+                                <li>Intended for far more serious applications, meaning plenty of safety lockouts and potential sticking points</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/stmicroelectronics/L6470H/2682927">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>EMC2301-1-ACZL-TR</td>
+                        <td><img src="media/Component_Selection/EMC2301.bmp" alt="MC Motor Driver"
+                                class="small-image"></td>
+                        <td>
+                            <ul>
+                                <li>Very cheap </li>
+                                <li>Easy interfacing over PWM</li>
+                                <li>Configuration done over serial</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Impercise position, as it does not operate in steps</li>
+                                <li>Designed to drive fan motors, which will take adaptation to utilize for my requirements</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/microchip-technology/EMC2301-1-ACZL-TR/3872090">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>A3908EEETR-T</td>
+                        <td><img src="media/Component_Selection/A3908EEETR.bmp" alt="Allegro Motor Driver"
+                                class="small-image">
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Very cheap </li>
+                                <li>Operates at microcontroller voltage</li>
+                                <li>Configuration over SPI</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Requires reflow oven to solder </li>
+                                <li>Low load capabilities, which may be an issue depending on motor</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/allegro-microsystems/A3908EEETR-T/1991942">
+                                <div class="digikey-link"></div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3> My Selection </h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Justification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>L6470H</td>
+                        <td><img src="media/Component_Selection/l6479h.bmp" alt="MotorDriver" class="small-image">
+                        </td>
+                        <td>None of the options are particularly great, but looking around (And given my understanding of the requirements),
+                            it appears that this isn't a common issue. Generally stepper motors are controlled by daughter-boards or utilize
+                            onboard hardware for interfacing, which is against the rules of the assignment. If the rules change or are redefined
+                            I will likely replace this with an easier option to save time on fabrication.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- Toggle dropdown script -->
+    <script>
+        function toggleTable(tableId) {
+            var table = document.getElementById(tableId);
+            table.classList.toggle("show");
+        }
+    </script>
+
 </body>
 
 </html>
