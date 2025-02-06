@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Define the viewport, and set page zoom to 1.0 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Selection</title>
+
+  <!-- CSS -->
+  <style>
+    /* General Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    /* Header formatting */
+    h1 { font-size: 2em; color: #333; }
+    h2 { font-size: 1.75em; color: #444; }
+    h3 { font-size: 1.5em; color: #555; }
+    /* Paragraph Styling */
+    p {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 1em;
+    }
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+    /* Image Styling */
+    .small-image {
+        width: 200px;
+    }
+    /* Line Break to make content easier to read*/
+    hr {
+        border: none;
+        border-top: 2px solid #333;
+        margin: 20px 0;
+    }
+    /* Unordered List Styling */
+    ul {
+        margin: 0;       /* Removes default margin */
+        padding-left: 20px; /* Adjusts bullet indentation */
+    }
+    /* List item styling */
+    li {
+        line-height: 1.5;
+    }
+    /* Digikey logo for clickable links */
+    .digikey-link {
+        width: 100px;
+        height: 100px;
+        background-image: url("media/Component_Selection/digikey.bmp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+    }
+
+  </style>
+</head>
+
+<body>
+    
+    <!-- Page Header -->
+     <h1>Individual Component Selection</h1>
+     <p> This page logs my individual component selection. Included are both my considered options for all major subsystems,
+         as well as my justification for chosing individual supporting components for my hardware.</p>
+    
+     <p>Due to project requirements, through-hole components will not be considered for selection.</p>
+
+    <!-- Line break to make page easier to read -->
+    <hr>
+
+    <h2>Microcontroller Selection</h2>
+    <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider myself rather skilled
+        at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of potential components due to 
+        the relative age of C compared to other available languages, as well as its use within most major microcontroller brands.
+    </p>
+
+    
+
+    <!-- Major Component Table -->
+     <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Image</th>
+                <th>Advantages</th>
+                <th>Disadvantages</th>
+                <th>Hyperlink</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PIC18F47Q10 TQFP/44</td>
+                <td><img src="media/Component_Selection/pic.bmp" alt="PIC Microcontroller" class = "small-image"></td>
+                <td>
+                    <ul>
+                        <li>Familiarity with programming interface</li>
+                        <li>Inexpensive</li>
+                        <li>Plentiful documentation</li>
+                        <li>Teaching-team support</li>
+                        <li>Likely to be popular amongst students (Better community support)</li>
+                        <li>Higher internal clock (64MHz)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Overkill given the project requirements</li>
+                        <li>Restricted access to python libraries without manual labor</li>
+                    </ul>
+                </td>
+                <td>
+                    <a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47Q10-I-PT/10187786">
+                        <div class = "digikey-link"></div>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>ATMEGA328PB-MU</td>
+                <td><img src="media/Component_Selection/atmel.bmp" alt="PIC Microcontroller" class = "small-image"></td>
+                <td>
+                    <ul>
+                        <li>Used regularly at my workplace for production systems</li>
+                        <li>Mildly Inexpensive</li>
+                        <li>Plentiful documentation</li>
+                        <li>Readily accepts Arduino libraries</li>
+                        <li>Reduced power consumption</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li>Overkill given the project requirements</li>
+                        <li>Lower internal clock (20MHz)</li>
+                        <li>Requires reflow oven for heatsync</li>
+                        <li>Form factor makes soldering more difficult</li>
+                        <li>Requires an AVR programmer</li>
+                    </ul>
+                </td>
+                <td>
+                    <a href="https://www.digikey.com/en/products/detail/microchip-technology/PIC18F47Q10-I-PT/10187786">
+                        <div class = "digikey-link"></div>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+     </table>
+</body>
+
+</html>
