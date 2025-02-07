@@ -93,6 +93,11 @@
             width: 200px;
         }
 
+        /*Centered image styling*/
+        .centered-image {
+            align-items: center;
+        }
+
         /* Line Break to make content easier to read*/
         hr {
             border: none;
@@ -191,6 +196,38 @@
 
     <!-- Line break to make page easier to read -->
     <hr>
+
+    <h1>Subsystem functionality</h1>
+
+    <pt> 
+        Our team's project is a simulated wind-tunnel, where we use a small airplane on a pivot with streamers to show airflow,
+        as well as a 7-segment display reflecting windspeed. These values can be controlled by an operator using dials. My part is
+        the aircraft and relevant control systems. This means I need a stepper motor with fine control, and a way to execute on commands
+        from the controller. Our team has decided it would be most efficient to use UART for our intersystem communication, and just
+        forward messages between control systems with headers to identify the source of individual messages. Response time between systems
+        is not paramount, so this should be a viable strategy assuming all team members chose to use microcontrollers with sufficient
+        data storage to stage the information to be sent.
+    </pt>
+
+<hr>
+
+    <h1>PIC Pin Diagram</h1>
+    <pt>
+        As much of my subsystem's communication is handled through a serial interface, very few pins are actually
+        required to
+        interface with the required hardware. SPI interfacing controls the motor, and the UART pins handle inter-system
+        communication
+        with my teammates subsystems. Below is the pinout diagram showing the current pin allocations, which may be
+        subject to change
+        as the board development moves along and the project scope becomes better defined.
+
+        <div style="text-align: center;">
+            <img src="media/Component_Selection/UQFN40.png" alt="MPLab Pinout">
+        </div>
+
+    </pt>
+
+<hr>
 
     <h1>Major Hardware Selection</h1>
 
@@ -619,10 +656,12 @@
 
         <div id="Motor" class="hidden">
 
-            <p>For motor selection I am only looking for a few things. It needs to be easy to connect 3d printed hardware
-                to, as that is the intended interface, and it needs to be compatable with the selected motor driver, which
-                is actually very easy since the motor driver I selected is suprisingly dynamic and has plenty of tunable 
-                settings. 
+            <p>For motor selection I am only looking for a few things. It needs to be easy to connect 3d printed
+                hardware
+                to, as that is the intended interface, and it needs to be compatable with the selected motor driver,
+                which
+                is actually very easy since the motor driver I selected is suprisingly dynamic and has plenty of tunable
+                settings.
             </p>
 
             <table>
@@ -651,20 +690,21 @@
                         </td>
                         <td>
                             <ul>
-                                <li>Designed for hobbyists, seems to have a relatively high manufacturing failure rate</li>
+                                <li>Designed for hobbyists, seems to have a relatively high manufacturing failure rate
+                                </li>
                                 <li>Round shaft, so set screw will be required to attach to hardware </li>
                             </ul>
                         </td>
                         <td>
-                            <a
-                                href="https://www.digikey.com/en/products/detail/sparkfun-electronics/ROB-09238/5318747">
+                            <a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/ROB-09238/5318747">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
                     </tr>
                     <tr>
                         <td>MIKROE-1530</td>
-                        <td><img src="media/Component_Selection/MIKROE.bmp" alt="MikroElektronika Motor" class="small-image">
+                        <td><img src="media/Component_Selection/MIKROE.bmp" alt="MikroElektronika Motor"
+                                class="small-image">
                         </td>
                         <td>
                             <ul>
@@ -679,8 +719,7 @@
                             </ul>
                         </td>
                         <td>
-                            <a
-                                href="https://www.digikey.com/en/products/detail/mikroelektronika/MIKROE-1530/5724295">
+                            <a href="https://www.digikey.com/en/products/detail/mikroelektronika/MIKROE-1530/5724295">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
@@ -706,8 +745,7 @@
                             </ul>
                         </td>
                         <td>
-                            <a
-                                href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/324/5022791">
+                            <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/324/5022791">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
@@ -731,10 +769,14 @@
                         <td><img src="media/Component_Selection/AdafruitMotor.bmp" alt="Adafruit Motor"
                                 class="small-image"></td>
                         <td>Component familiarity combined with access to years of online discussion makes this the
-                            superior choice. Already owning the part helps as well, as it negates the price downside. The
-                            keyed axle makes mounting it to the 3d printed components a breeze. The only comparable option
-                            would be the ROB-09238, but familiarity has immense value to me, especially given the complexity
-                            of the motor driver selected. I would rather the motor itself be the easiest part to integrate.
+                            superior choice. Already owning the part helps as well, as it negates the price downside.
+                            The
+                            keyed axle makes mounting it to the 3d printed components a breeze. The only comparable
+                            option
+                            would be the ROB-09238, but familiarity has immense value to me, especially given the
+                            complexity
+                            of the motor driver selected. I would rather the motor itself be the easiest part to
+                            integrate.
                         </td>
                     </tr>
                 </tbody>
