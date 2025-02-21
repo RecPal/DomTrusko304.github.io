@@ -51,7 +51,7 @@ document.querySelectorAll(".zoomable-image").forEach(image => {
 });
 
 
-fetch("taskbar.html")
+fetch("/Taskbar.html")
     .then(response => response.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
