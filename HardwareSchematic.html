@@ -15,35 +15,65 @@
         <h1 class="content-header">Hardware Schematic</h1>
         <div class="content-text">
             <p> My personal hardware schematic, made using Altium Designer, is split into 3 distinct pages.</p>
-            <p> This choice was made to <u>clarify my subsystem functionality</u>, and to avoid overwhelming the reader.</p>
+            <p> This choice was made to <u>clarify my subsystem functionality</u>, and to avoid overwhelming the reader.
+            </p>
         </div>
     </content-section>
 
     <horizontal-content-view>
-        <horizontal-content-selection>
-            <p class="horizontal-content-selection-text">Microcontroller</p>
-        </horizontal-content-selection>
-        <horizontal-content-selection>
-            <p class="horizontal-content-selection-text">Power System</p>
-        </horizontal-content-selection>
-        <horizontal-content-selection>
-            <p class="horizontal-content-selection-text">Motor Driver</p>
-        </horizontal-content-selection>
-        <horizontal-content-selection>
-            <p class="horizontal-content-selection-text">Bill of Materials</p>
-        </horizontal-content-selection>
+        <button class="horizontal-content-selection"
+            onclick="toggleDropdown(this, 'dropdown1')">Microcontroller</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown2')">Power Supply</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown3')">Motor Driver</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown4')">Bill of
+            Materials</button>
     </horizontal-content-view>
 
+    <div id="dropdown1" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> Microcontroller Layout </p>
+            <p class="content-text">
+                The microcontroller, including pinouts to other pages. The microcontroller will be programmed through a
+                microusb header,
+                this header is not capable of powering the circuit, so an external power supply is required
+            </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/microcontroller.png" alt="Hardware Diagram">
+            </div>
+        </div>
 
 
-    <script>
-        fetch("taskbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
-            });
+    </div>
 
-            
+    <div id="dropdown2" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> gbye </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/Power.png" alt="Hardware Diagram">
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="dropdown3" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> rgargae </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/Motor Driver.png" alt="Hardware Diagram">
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="dropdown4" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> dasfad </p>
+        </div>
+    </div>
+
+
+    <script src="scripts.js" defer>
+
     </script>
 
 </body>
