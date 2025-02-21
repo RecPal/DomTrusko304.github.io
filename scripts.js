@@ -52,7 +52,13 @@ document.querySelectorAll(".zoomable-image").forEach(image => {
 
 
 fetch("https://recpal.github.io/DomTrusko304.github.io/Taskbar.html")
-    .then(response => response.text())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+    })
     .then(data => {
         document.getElementById("header").innerHTML = data;
-    });
+    })
+    .catch(error => console.error("Fetch error:", error));
