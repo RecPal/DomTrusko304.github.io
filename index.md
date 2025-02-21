@@ -8,3 +8,4 @@ Welcome to my website, assignments are listed below
 ### Website Contents
 [Block Diagram](blockdiagram.md)
 [Component Selection](componentselection.html)
+[Hardware Schematic](HardwareSchematic.html)

@@ -1,0 +1,43 @@
+content-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-header {
+    font-size: 40px;
+    padding: 0px;
+    padding-left: 1vw;
+    margin-bottom: 0vh;
+}
+
+.content-text {
+    color: rgb(54, 54, 54);
+    line-height: 2vh;
+    margin-left: 1vw;
+    font-size: 90%;
+}
+
+horizontal-content-view {
+    background-color: rgb(51, 51, 51);
+    display: flex;
+    width: 97vw;
+    height: 5vh;
+    margin: auto;
+    margin-top: 1vh;
+}
+
+horizontal-content-selection {
+    background-color: rgb(88, 88, 88);
+    display: flex;
+    margin: 0.2vw;
+    width: 25%;
+}
+
+.horizontal-content-selection-text {
+    color: white;
+    display: flex;
+    font-size: 1.5vw;
+    letter-spacing: 0.1vw;
+    overflow:visible;
+    margin: auto;
+}

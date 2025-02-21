@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Schematic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <content-section>
+        <h1 class="content-header">Hardware Schematic</h1>
+        <div class="content-text">
+            <p> My personal hardware schematic, made using Altium Designer, is split into 3 distinct pages.</p>
+            <p> This choice was made to <u>clarify my subsystem functionality</u>, and to avoid overwhelming the reader.</p>
+        </div>
+    </content-section>
+
+    <horizontal-content-view>
+        <horizontal-content-selection>
+            <p class="horizontal-content-selection-text">Microcontroller</p>
+        </horizontal-content-selection>
+        <horizontal-content-selection>
+            <p class="horizontal-content-selection-text">Power System</p>
+        </horizontal-content-selection>
+        <horizontal-content-selection>
+            <p class="horizontal-content-selection-text">Motor Driver</p>
+        </horizontal-content-selection>
+        <horizontal-content-selection>
+            <p class="horizontal-content-selection-text">Bill of Materials</p>
+        </horizontal-content-selection>
+    </horizontal-content-view>
+
+
+
+    <script>
+        fetch("taskbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+
+            
+    </script>
+
+</body>
+
+</html>
