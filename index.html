@@ -4,16 +4,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Hardware Schematic</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id="header"></div>
 
+    <content-section>
+        <h1 class="content-header">Hardware Schematic</h1>
+        <div class="content-text">
+            <p> My personal hardware schematic, made using Altium Designer, is split into 3 distinct pages.</p>
+            <p> This choice was made to <u>clarify my subsystem functionality</u>, and to avoid overwhelming the reader.
+            </p>
+        </div>
+    </content-section>
+
+    <horizontal-content-view>
+        <button class="horizontal-content-selection"
+            onclick="toggleDropdown(this, 'dropdown1')">Microcontroller</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown2')">Power Supply</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown3')">Motor Driver</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown4')">Bill of
+            Materials</button>
+    </horizontal-content-view>
+
+    <div id="dropdown1" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> Microcontroller Layout </p>
+            <p class="content-text">
+                The microcontroller, including pinouts to other pages. The microcontroller will be programmed through a
+                microusb header,
+                this header is not capable of powering the circuit, so an external power supply is required
+            </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/microcontroller.png" alt="Hardware Diagram">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="dropdown2" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> Power System Layout </p>
+            <p class="content-text">
+                Due to the requirements of the project, two power systems are required. One power system is for the I2C chip and the ESP32, while the 5v system is used to drive the pulse pins on the stepper motor driver.
+                It would be considerably easier to move to a 5v microcontroller and I2C IO expander, but this solution is a side-effect of the class-set project requirements.
+            </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/Power.png" alt="Hardware Diagram">
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="dropdown3" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> Motor Driver and I2C IO expander </p>
+            <p class="content-text">
+                My board needs to interface with a 24v stepper motor, driven by an external driver. This driver requires a 5v magnitude for the pulse, which cannot be provided by the 3.3v microcontroller. My solution is
+                to use MOSFETs with a trigger at 0.7v to activate the 5v pulse, which in turn drives the motor driver. The IO expander is required by the project rules, so it is used to write/read a motor lockout to allow the
+                motor to be put in sleep mode, where it will disable the motor control pulses and lock its movement.
+            </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/Motor Driver.png" alt="Hardware Diagram">
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="dropdown4" class="dropdown-content" style="display: none;">
+        <div class="deployable-content-box">
+            <p class="content-header"> Bill of Materials </p>
+            <p class="content-text">
+                The bill of materials includes all components across all documents, including their quantity, model number, and manufacturer. These will be updated as final part decisions are made. For some components, such as resistors,
+                they will be bulk-ordered to minimize the friction of ordering individual units. We will keep them at the same size to ensure easy integration with whatever our final decision is.
+            </p>
+            <div class="zoomable-container">
+                <img class="zoomable-image" src="media/Hardware_Schematic/BOM.png" alt="Hardware Diagram">
+            </div>
+        </div>
+    </div>
+
+
     <script src="scripts.js" defer>
 
     </script>
+
 </body>
 
 </html>
