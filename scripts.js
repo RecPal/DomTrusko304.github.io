@@ -1,7 +1,7 @@
 function toggleDropdown(event, id) {
     let dropdown = document.getElementById(id);
 
-    
+
 
     // Close the dropdown if clicking the same button again
     if (dropdown.style.display === "block" && dropdown.dataset.activeButton === event.innerText) {
@@ -50,8 +50,7 @@ document.querySelectorAll(".zoomable-image").forEach(image => {
     });
 });
 
-
-fetch("https://recpal.github.io/DomTrusko304.github.io/Taskbar.html")
+fetch(`https://recpal.github.io/DomTrusko304.github.io/Taskbar.html?v=${new Date().getTime()}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
