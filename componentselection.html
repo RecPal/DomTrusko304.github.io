@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Component Selection</title>
 
+
+    <link rel="stylesheet" href="styles.css">
+
     <!-- CSS -->
     <style>
         /* General Styling */
@@ -15,7 +18,8 @@
             font-family: Arial, sans-serif;
             color: white;
             margin: 20px;
-            font-weight: bolder
+            font-weight: bolder;
+            margin:0px;
         }
 
         /* Header formatting */
@@ -57,14 +61,8 @@
         }
 
         /* Paragraph Styling */
-        p {
-            font-size: 1em;
-            line-height: 1.6;
-            margin-bottom: 1em;
-            color: black;
-            background-color: rgb(255, 255, 255);
-            border-radius: 5px;
-            padding: 5px;
+        .in-content-text {
+            color:black;
         }
 
         /* Table Styling */
@@ -187,6 +185,8 @@
 
 <body>
 
+    <div id="header"></div>
+
     <!-- Page Header -->
     <h1>Individual Component Selection</h1>
     <pt> This page logs my individual component selection. Included are both my considered options for all major
@@ -238,7 +238,7 @@
 
         <div id="Microcontroller" class="hidden">
 
-            <p>For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider
+            <p class="in-content-text">For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider
                 myself
                 rather skilled
                 at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of
@@ -383,7 +383,7 @@
 
         <div id="Power Regulator" class="hidden">
 
-            <p>For power regulator selection, I am prioritizing ease of use and minimal support components.
+            <p class="in-content-text">For power regulator selection, I am prioritizing ease of use and minimal support components.
                 This will maximize the time I have to work on more interesting subsystems, and reduce the risk
                 of component failure. Ideally a fixed-output regulator for ease-of-use. It also must be capable of
                 producing the power required to drive the microcontroller and motor driver logic circuit.
@@ -516,7 +516,7 @@
 
         <div id="Motordriver" class="hidden">
 
-            <p>For motor driver selection, I appear to be severely limited. The primary reason being that many of these
+            <p class="in-content-text">For motor driver selection, I appear to be severely limited. The primary reason being that many of these
                 motor drivers come
                 pre-mounted onto daughter-boards, which require justification to use (As per the project requirements).
                 Ideally the control
@@ -656,7 +656,7 @@
 
         <div id="Motor" class="hidden">
 
-            <p>For motor selection I am only looking for a few things. It needs to be easy to connect 3d printed
+            <p class="in-content-text">For motor selection I am only looking for a few things. It needs to be easy to connect 3d printed
                 hardware
                 to, as that is the intended interface, and it needs to be compatable with the selected motor driver,
                 which
@@ -783,6 +783,8 @@
             </table>
         </div>
     </div>
+
+    <script src="scripts.js" defer></script>
 
     <!-- Toggle dropdown script -->
     <script>
