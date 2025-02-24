@@ -67,12 +67,6 @@
             margin: auto;
             margin-left: 2vh;
         }
-
-        .active-page {
-            font-weight: bold;
-            background-color: rgb(26, 255, 0);
-            /* Match the hover color */
-        }
     </style>
 </head>
 
@@ -86,32 +80,19 @@
 
         <page-nav>
             <nav-button>
-                <a href="index.html" class="nav-button-text" data-page="index.html"> Homepage </a>
+                <a href="index.html" class="nav-button-text"> Homepage </a>
             </nav-button>
             <nav-button>
-                <a href="HardwareSchematic.html" class="nav-button-text" data-page="HardwareSchematic.html"> Hardware
+                <a href="HardwareSchematic.html" class="nav-button-text"> Hardware
                     Schematic </a>
             </nav-button>
             <nav-button>
-                <a href="componentselection.html" class="nav-button-text" data-page="componentselection.html"> Component
+                <a href="componentselection.html" class="nav-button-text"> Component
                     Selection </a>
             </nav-button>
             <nav-button>
-                <a href="block-diagram.html" class="nav-button-text" data-page="block-diagram.html"> Block Diagram </a>
+                <a href="block-diagram.html" class="nav-button-text"> Block Diagram </a>
             </nav-button>
         </page-nav>
     </header>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const currentPage = window.location.pathname.split("/").pop(); // Get current file name
-            const navLinks = document.querySelectorAll(".nav-button-text");
-
-            navLinks.forEach(link => {
-                if (link.getAttribute("data-page") === currentPage) {
-                    link.parentElement.classList.add("active-page"); // Apply class to parent nav-button
-                }
-            });
-        });
-    </script>
 </body>
