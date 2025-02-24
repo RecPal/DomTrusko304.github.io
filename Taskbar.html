@@ -5,15 +5,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-
-        body{
+        body {
             font-family: 'roboto', sans-serif;
         }
 
         page-header {
             background: linear-gradient(to right, hsl(0, 98%, 34%), rgb(179, 97, 94));
             display: flex;
-            height: 9vw;
+            height: clamp(5vh, 5vw, 9vw);
             width: 100vw;
             margin: 0px;
         }
@@ -21,7 +20,7 @@
         page-nav {
             background-color: rgb(180, 180, 180);
             display: flex;
-            height:6vw;
+            height: clamp(3vw, 9vw, 7vh);
             width: 100vw;
             flex-direction: row;
         }
@@ -40,7 +39,7 @@
         }
 
         nav-button:hover {
-            background-color:rgb(131, 131, 131);
+            background-color: rgb(131, 131, 131);
         }
 
         .nav-button-text {
@@ -48,48 +47,71 @@
             padding: auto;
             align-items: flex-start;
             display: flex;
-            font-size:1.6vw;
+            font-size: 1.6vw;
             padding-left: 0.2vw;
             padding-right: 0.2vw;
             letter-spacing: 0.1vw;
-            overflow:hidden;
-            margin:auto;
+            overflow: hidden;
+            margin: auto;
             text-decoration: none;
         }
 
         .site-name {
             color: white;
             display: flex;
-            font-size:3vw;
+            font-size: 3vw;
             padding-left: 2vw;
-            font-weight:bold;
+            font-weight: bold;
             letter-spacing: 0.1vw;
-            overflow:auto;
-            margin:auto;
+            overflow: auto;
+            margin: auto;
             margin-left: 2vh;
+        }
+
+        .active-page {
+            font-weight: bold;
+            background-color: rgb(26, 255, 0);
+            /* Match the hover color */
         }
     </style>
 </head>
 
-<header class="taskbar">
-    <page-header>
-        <p class="site-name">
-            Dominick Trusko's 314 Personal Website
-        </p>
-    </page-header>
+<body>
+    <header class="taskbar">
+        <page-header>
+            <p class="site-name">
+                Dominick Trusko's 314 Personal Website
+            </p>
+        </page-header>
 
-    <page-nav>
-        <nav-button>
-            <a href="index.html" class="nav-button-text"> Homepage </a>
-        </nav-button>
-        <nav-button>
-            <a href="HardwareSchematic.html" class="nav-button-text"> Hardware Schematic </a>
-        </nav-button>
-        <nav-button>
-            <a href="componentselection.html" class="nav-button-text"> Component Selection </a>
-        </nav-button>
-        <nav-button>
-            <a href="block-diagram.html" class="nav-button-text"> Block Diagram </a>
-        </nav-button>
-    </page-nav>
-</header>
+        <page-nav>
+            <nav-button>
+                <a href="index.html" class="nav-button-text" data-page="index.html"> Homepage </a>
+            </nav-button>
+            <nav-button>
+                <a href="HardwareSchematic.html" class="nav-button-text" data-page="HardwareSchematic.html"> Hardware
+                    Schematic </a>
+            </nav-button>
+            <nav-button>
+                <a href="componentselection.html" class="nav-button-text" data-page="componentselection.html"> Component
+                    Selection </a>
+            </nav-button>
+            <nav-button>
+                <a href="block-diagram.html" class="nav-button-text" data-page="block-diagram.html"> Block Diagram </a>
+            </nav-button>
+        </page-nav>
+    </header>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = window.location.pathname.split("/").pop(); // Get current file name
+            const navLinks = document.querySelectorAll(".nav-button-text");
+
+            navLinks.forEach(link => {
+                if (link.getAttribute("data-page") === currentPage) {
+                    link.parentElement.classList.add("active-page"); // Apply class to parent nav-button
+                }
+            });
+        });
+    </script>
+</body>
