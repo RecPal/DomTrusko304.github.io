@@ -540,26 +540,20 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>L6470H</td>
-                        <td><img src="media/Component_Selection/l6479h.bmp" alt="MotorDriver" class="small-image">
+                        <td>TB6600</td>
+                        <td><img src="media/Component_Selection/TB6600.png" alt="MotorDriver" class="small-image">
                         </td>
                         <td>
                             <ul>
-                                <li>Same logic-voltage as microcontroller</li>
                                 <li>Relatively-inexpensive</li>
-                                <li>Precision control over SPI</li>
-                                <li>Plenty of configuration options</li>
-                                <li>Backup systems if serial communication fails</li>
-                                <li>External clock support (Can be synced with microcontroller)</li>
-                                <li>Error pin allows diagnostics in case of serial communication failure</li>
+                                <li>Very well documented, used in many hobbiest projects</li>
+                                <li>External with it's own dedicated heatsink, minimizing complexity</li>
                             </ul>
                         </td>
                         <td>
                             <ul>
                                 <li>Definitely overkill for the given application</li>
-                                <li>Requires a lot of support hardware to utilize all functions</li>
-                                <li>Intended for far more serious applications, meaning plenty of safety lockouts and
-                                    potential sticking points</li>
+                                <li>Requires converting 3.3v signals to 5v signals to control digital logic</li>
                             </ul>
                         </td>
                         <td>
@@ -633,16 +627,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>L6470H</td>
-                        <td><img src="media/Component_Selection/l6479h.bmp" alt="MotorDriver" class="small-image">
+                        <td>TB6600</td>
+                        <td><img src="media/Component_Selection/TB6600.png" alt="MotorDriver" class="small-image">
                         </td>
-                        <td>None of the options are particularly great, but looking around (And given my understanding
-                            of the requirements),
-                            it appears that this isn't a common issue. Generally stepper motors are controlled by
-                            daughter-boards or utilize
-                            onboard hardware for interfacing, which is against the rules of the assignment. If the rules
-                            change or are redefined
-                            I will likely replace this with an easier option to save time on fabrication.
+                        <td>
+                            This motor driver is being chosen not necessarily due to it being the best option, but due to it being available
+                            and regularly used by hobbyists. It will save time on integration using existing python libraries, and will 
                         </td>
                     </tr>
                 </tbody>
