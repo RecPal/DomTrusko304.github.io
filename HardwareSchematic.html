@@ -50,9 +50,9 @@
         <div class="deployable-content-box">
             <p class="content-header"> Power System Layout </p>
             <p class="content-text">
-                Due to the requirements of the project, two power systems are required. One power system is for the I2C
-                chip and the ESP32, while the 5v system is used to drive the pulse pins on the stepper motor driver.
-                It would be considerably easier to move to a 5v microcontroller and I2C IO expander, but this solution
+                Due to the requirements of the project, two power systems are required. One power system is for the
+                ESP32, while the 5v system is used to drive the pulse pins on the stepper motor driver.
+                It would be considerably easier to move to a 5v microcontroller, but this solution
                 is a side-effect of the class-set project requirements.
             </p>
             <div class="zoomable-container">
@@ -69,9 +69,6 @@
                 My board needs to interface with a 24v stepper motor, driven by an external driver. This driver requires
                 a 5v magnitude for the pulse, which cannot be provided by the 3.3v microcontroller. My solution is
                 to use MOSFETs with a trigger at 0.7v to activate the 5v pulse, which in turn drives the motor driver.
-                The IO expander is required by the project rules, so it is used to write/read a motor lockout to allow
-                the
-                motor to be put in sleep mode, where it will disable the motor control pulses and lock its movement.
             </p>
             <div class="zoomable-container">
                 <img class="zoomable-image" src="media/Hardware_Schematic/motor-system.png" alt="Hardware Diagram">
@@ -109,7 +106,8 @@
             <img style="max-width: max-content; max-height: max-content; margin:auto; margin-bottom: 2vh;"
                 src="media/Hardware_Schematic/power-budget.png" alt="Power Budget Image">
             <p class="content-text">
-                The output of my voltage regulator is 500mA at 3.3v. Which means that it is capable of powering all hardware during peak output
+                The output of my voltage regulator is 500mA at 3.3v. Which means that it is capable of powering all
+                hardware during peak output
             </p>
         </div>
     </div>
