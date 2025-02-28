@@ -380,7 +380,7 @@
     <!-- Regulator Dropdown -->
     <div class="dropdown-container-alt" id="powerRegulatorContainer">
 
-        <div class="dropdown" onclick="toggleTable('Power Regulator')">Power Regulator Selection</div>
+        <div class="dropdown" onclick="toggleTable('Power Regulator')">Power Regulator Selection (3.3v)</div>
 
         <div id="Power Regulator" class="hidden">
 
@@ -403,27 +403,26 @@
                 <tbody>
                     <tr>
                         <td>LM2594HVMX-3.3/NOPB</td>
-                        <td><img src="media/Component_Selection/TIRegulator.bmp" alt="TI Regulator" class="small-image">
+                        <td><img src="media/Component_Selection/LM2594M-3.3.jpg" alt="UMW_regulator" class="small-image">
                         </td>
                         <td>
                             <ul>
                                 <li>Reliable</li>
-                                <li>Used through-hole version in previous course</li>
                                 <li>Minimal supporting hardware</li>
                                 <li>Fixed output at microcontroller voltage</li>
-                                <li>Output current not significantly higher than required</li>
-                                <li>Excellent documentation and customer support</li>
                             </ul>
                         </td>
                         <td>
                             <ul>
                                 <li>Significantly more expensive than alternatives</li>
                                 <li>Many NC Pins contribute to footprint, but not functionality</li>
+                                <li>Generates far more power than required for the project purposes (1.5A > 550mA)</li>
+                                <li>Documentation originally written in Mandarin, then translated to english</li>
                             </ul>
                         </td>
                         <td>
                             <a
-                                href="https://www.digikey.com/en/products/detail/texas-instruments/LM2594HVMX-3-3-NOPB/366821">
+                                href="https://www.digikey.com/en/products/detail/umw/LM2594M-3-3/16705971">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
@@ -494,6 +493,47 @@
                 <tbody>
                     <tr>
                         <td>LM2594HVMX-3.3/NOPB</td>
+                        <td><img src="media/Component_Selection/LM2594M-3.3.jpg" alt="UMW_regulator" class="small-image">
+                        </td>
+                        <td>Component familiarity combined with access to the customer support line offsets the relative
+                            cost difference.
+                            While the other buck converters are ~$1, this one sits at ~$4. While that is a major jump, a
+                            reliable power
+                            supply is the backbone of a functional project. Cheaping out in this department leaves me
+                            open to far more
+                            potential problems than any other subsystem as it can lead to cascading hardware failures.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="dropdown-container-alt" id="powerRegulatorContainer">
+
+        <div class="dropdown" onclick="toggleTable('Power Regulator 5v')">Power Regulator Selection (5v)</div>
+
+        <div id="Power Regulator 5v" class="hidden">
+
+            <p class="in-content-text"> The 5v power regulator is exclusively used to flip transistors, which is such a tiny power
+                draw that the size of the regulator is irrelevant. This selection is also auxillary, as it is for a subsystem I am 
+                integrating outside of the class scope, so I went with a singular selection, that being the one I already own.
+            </p>
+
+            <h3> My Selection </h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Image</th>
+                        <th>Justification</th>
+                        <th>Hyperlink</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LM2674M-5.0/NOPB</td>
                         <td><img src="media/Component_Selection/TIRegulator.bmp" alt="TI Regulator" class="small-image">
                         </td>
                         <td>Component familiarity combined with access to the customer support line offsets the relative
@@ -503,6 +543,12 @@
                             supply is the backbone of a functional project. Cheaping out in this department leaves me
                             open to far more
                             potential problems than any other subsystem as it can lead to cascading hardware failures.
+                        </td>
+                        <td>
+                            <a
+                                href="https://www.digikey.com/en/products/detail/texas-instruments/LM2674M-5-0-NOPB/363795">
+                                <div class="digikey-link"></div>
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -557,7 +603,7 @@
                             </ul>
                         </td>
                         <td>
-                            <a href="https://www.digikey.com/en/products/detail/stmicroelectronics/L6470H/2682927">
+                            <a href="https://www.amazon.com/Tofelf-Upgraded-TB6600-Subdivision-Controller/dp/B0BZYX7Z4Z?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A13UGE6O6BEM5M&gQT=2&th=1">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
