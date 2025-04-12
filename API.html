@@ -10,10 +10,16 @@
     <style>
         .message-header {
             padding: 1vw;
+            font-size: 1em;
         }
 
         .message-content {
             background-color: rgb(234, 234, 234);
+        }
+
+        .message-closespace {
+            margin: 0;
+            white-space: nowrap;
         }
 
         .pin-square {
@@ -49,9 +55,17 @@
         }
 
         .common-message {
-            color: blue;
+            color: rgb(0, 0, 183);
             display: inline;
             white-space: nowrap;
+        }
+
+        .self-identifier {
+            color: rgb(196, 0, 0);
+        }
+
+        .global-message {
+            color: green;
         }
     </style>
 </head>
@@ -72,13 +86,10 @@
 
         All messages are also recieved by the wifi system for live-display to the operator via the
         web-interface. All messages can also be spoofed by the web-interface to overwrite command inputs by
-        the user
+        the user.
 
         <div style="padding-bottom: 2vw;"></div>
 
-
-
-        <div style="padding-bottom: 2vh;"></div>
 
         Each subsystem address is laid out below:
 
@@ -115,17 +126,39 @@
                     <tr>
                         <td> All </td>
                         <td> All Subsystems</td>
-                        <td> 0x10</td>
+                        <td> 0x58</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div style="padding-bottom: 2vh;"></div>
+        <div style="padding-bottom: 4vh;"></div>
 
-        <span>For the "Example" section, values listed in <strong class="common-message">BLUE</strong> are common for
-            all messages
-            (Headers/Footers)
+        <div style="font-size: 1.7em;"> Example Key: </div>
+
+        <div style="padding-bottom: 1vh;"></div>
+
+        <span> <strong class="common-message">BLUE</strong> : All common message components (IE Headers/Footers)
+        </span>
+
+        <span> <strong class="self-identifier">RED</strong> : The local address for my subsystem
+        </span>
+
+        <span> <strong class="global-message">GREEN</strong> : The address for all devices
+        </span>
+
+        <div style="padding-bottom: 1vh;"></div>
+
+        <span>Including the headers/footers are <u>not required for the assignment</u>, but including them will provide
+            better reference information for both myself and my team during production. Therefor they will remain in
+            this document</span>
+
+        <div style="padding-bottom: 1vh;"></div>
+
+        <span>
+            Messages do not need declaration types for data. Because the data has non-overlapping ranges, the recipient
+            can check the sender and intended recipient (Either their device specifically or all devices) and determine
+            the contents of the packet.
         </span>
 
         <div style="padding-bottom: 2vh;"></div>
@@ -150,12 +183,17 @@
                         <td class="message-content"> TX </td>
                         <td class="message-content"> Ready to Recieve </td>
                         <td class="message-content"> uint_8 </td>
-                        <td class="message-content"> [255] </td>
+                        <td class="message-content"> [253] </td>
                         <td class="message-content"> 8 Bits [56 Bits Total] </td>
                         <td class="message-content"> Notifies subsystems that ready commands can be recieved </td>
-                        <td class="message-content"> <span><strong
-                                    class="common-message">[0x41][0x5a]</strong> [0x06][0x07][0xFF] <strong
-                                    class="common-message">[0x59][0x42]</strong></span> </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                <span class="self-identifier">[0x6]</span>
+                                <span class="global-message">[0x58]</span>
+                                [0xF3]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
                         <td class="message-content"> TX </td>
@@ -164,9 +202,14 @@
                         <td class="message-content"> [255] </td>
                         <td class="message-content"> 8 Bits [56 Bits Total] </td>
                         <td class="message-content"> Tells all devices to start their send clock </td>
-                        <td class="message-content"> <span><strong
-                                    class="common-message">[0x41][0x5a]</strong> [0x06][0x10][0xFF] <strong
-                                    class="common-message">[0x59][0x42]</strong></span> </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                <span class="self-identifier">[0x6]</span>
+                                <span class="global-message">[0x58]</span>
+                                [0xF5]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
                         <td class="message-content"> TX </td>
@@ -175,9 +218,14 @@
                         <td class="message-content"> [244] </td>
                         <td class="message-content"> 8 Bits [56 Bits Total] </td>
                         <td class="message-content"> Commands all devices to cease operation </td>
-                        <td class="message-content"> <span><strong
-                                    class="common-message">[0x41][0x5a]</strong> [0x06][0x10][0xF4] <strong
-                                    class="common-message">[0x59][0x42]</strong></span> </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                <span class="self-identifier">[0x6]</span>
+                                <span class="global-message">[0x58]</span>
+                                [0xF4]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
                         <td class="message-content"> RX </td>
@@ -185,37 +233,78 @@
                         <td class="message-content"> uint_8 </td>
                         <td class="message-content"> [0] </td>
                         <td class="message-content"> 8 Bits [56 Bits Total]</td>
-                        <td class="message-content"> Indicates to master device that no new information is available </td>
-                        <td class="message-content"> <span><strong
-                            class="common-message">[0x41][0x5a]</strong> [0x08][0x6][0x00] <strong
-                            class="common-message">[0x59][0x42]</strong></span> </td>
+                        <td class="message-content"> Indicates to master device that no new information is available
+                        </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                [0x09]
+                                <span class="self-identifier">[0x6]</span>
+                                [0x43]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
                         <td class="message-content"> RX </td>
-                        <td class="message-content"> Airspeed </td>
+                        <td class="message-content"> True Airspeed </td>
                         <td class="message-content"> uint_8 </td>
                         <td class="message-content"> [0-255] </td>
                         <td class="message-content"> 8 Bits [56 Bits Total]</td>
                         <td class="message-content"> Airspeed reporting from Windspeed subsystem </td>
-                        <td class="message-content"> <span><strong
-                            class="common-message">[0x41][0x5a]</strong> [0x09][0x6][0x43] <strong
-                            class="common-message">[0x59][0x42]</strong></span> </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                [0x09]
+                                <span class="global-message">[0x58]</span>
+                                [0x43]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="message-content"> Reset System </td>
+                        <td class="message-content"> RX </td>
+                        <td class="message-content"> Airspeed Target </td>
                         <td class="message-content"> uint_8 </td>
-                        <td class="message-content"> 0xAE </td>
-                        <td class="message-content"> 8 Bits </td>
-                        <td class="message-content"> Wifi System </td>
-                        <td class="message-content"> All Devices </td>
+                        <td class="message-content"> [0-100] </td>
+                        <td class="message-content"> 8 Bits [56 Bits Total]</td>
+                        <td class="message-content"> Airspeed dial target (Reported to web interface)</td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                [0x08]
+                                <span class="global-message">[0x58]</span>
+                                [0x44]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                     <tr>
-                        <td class="message-content"> Emergency Stop </td>
+                        <td class="message-content"> RX </td>
+                        <td class="message-content"> Pitch Target </td>
                         <td class="message-content"> uint_8 </td>
-                        <td class="message-content"> 0x99 </td>
-                        <td class="message-content"> 8 Bits </td>
-                        <td class="message-content"> Wifi System </td>
-                        <td class="message-content"> All Devices </td>
+                        <td class="message-content"> [101-201] </td>
+                        <td class="message-content"> 8 Bits [56 Bits Total]</td>
+                        <td class="message-content"> Pitch dial target </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <p class="message-closespace">
+                                [0x08]
+                                <span class="global-message">[0x58]</span>
+                                [0x67]
+                            </p>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="message-content"> RX </td>
+                        <td class="message-content"> Current Fan Speed </td>
+                        <td class="message-content"> uint_8 </td>
+                        <td class="message-content"> [0-100] </td>
+                        <td class="message-content"> 8 Bits [56 Bits Total]</td>
+                        <td class="message-content"> Current Fan Speed (Reported to web interface) </td>
+                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
+                            <div class="message-closespace">
+                                [0x09] <span class="global-message">[0x58] </span>[0x2B]
+                            </div>
+                            <strong class="common-message">[0x59][0x42]</strong>
+                        </td>
                     </tr>
                 </tbody>
             </table>
