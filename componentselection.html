@@ -200,22 +200,20 @@
     <h1>Subsystem functionality</h1>
 
     <pt> 
-        Our team's project is a simulated wind-tunnel, where we use a small airplane on a pivot with streamers to show airflow,
-        as well as a 7-segment display reflecting windspeed. These values can be controlled by an operator using dials. My part is
-        the aircraft and relevant control systems. This means I need a stepper motor with fine control, and a way to execute on commands
-        from the controller. Our team has decided it would be most efficient to use UART for our intersystem communication, and just
-        forward messages between control systems with headers to identify the source of individual messages. Response time between systems
-        is not paramount, so this should be a viable strategy assuming all team members chose to use microcontrollers with sufficient
-        data storage to stage the information to be sent.
+        Our team's project is a magnetic accelerator, using coils and motor drivers to accelerate a magnetic ball bearing and provide
+        perpetual motion. My system's purpose was to drive a screen providing data to the operator showing which sensor has detected the ball and it's estimated
+        position. To accomplish this, it required converting most of my original motor driver system to a software SPI driven system. I am doing this 
+        retroactively, so the hardware selection for the screen will not use selection criteria, as I had to use what was on-hand to complete the conversion
+        after the rapid team pivot near the end of the project.
     </pt>
 
 <hr>
 
-    <h1>PIC Pin Diagram</h1>
+    <h1>ESP Pin Diagram</h1>
     <pt>
         As much of my subsystem's communication is handled through a serial interface, very few pins are actually
         required to
-        interface with the required hardware. SPI interfacing controls the motor, and the UART pins handle inter-system
+        interface with the required hardware. SPI interfacing controls the screen, and the UART pins handle inter-system
         communication
         with my teammates subsystems. Below is the pinout diagram showing the current pin allocations, which may be
         subject to change
