@@ -17,16 +17,81 @@
             <p> My personal hardware schematic, made using Altium Designer, is split into 3 distinct pages.</p>
             <p> This choice was made to <u>clarify my subsystem functionality</u>, and to avoid overwhelming the reader.
             </p>
-            <a href="/media/Downloads/314PersonalBoard (2-21-2025).zip" download>Download the Altium Designer File</a>
-            <p></p>
         </div>
     </content-section>
+
+    <div style="flex-direction: row;">
+        <img src="media/Hardware_Schematic/FinalFront.png" alt="" style="width: 30em; padding-left: 1%;">
+        <img src="media/Hardware_Schematic/FinalRear.png" alt="" style="width: 30em; padding-left: 1%;">
+    </div>
+
+    <content-section>
+        <h1 class="content-header">User Benefit</h1>
+        <div class="content-text">
+            <p> While it doesn't show on the board, once mounted within the housing it is exceptionally sturdy. Given
+                its Potential
+                presence within an interactive museum exhibit, this makes sense. Nobody wants their exhibit to break.
+                This could be improved
+                further by improving the screen communication speed to display full-color images as well as replacing
+                the dupont pins with a locking solution,
+                such as a MOLEX header with a binding clip. </p>
+        </div>
+    </content-section>
+
+    <content-section>
+        <h1 class="content-header">Team Design and Decision Making</h1>
+        <div class="content-text">
+            <p> This design was made without input from my team, as I joined the team at the very end. Much of the functionality of the board was removed
+                to minimize system complexity for rapid integration. This board could be shrunk, likely to a size smaller than the screen it supports, by removing the support hardware
+            for the secondary voltage regulator, MOSFETS, and screw-terminals in favor of meeting the requirements more stringently. </p>
+        </div>
+    </content-section>
+
+    <content-section>
+        <h1 class="content-header">Potential Improvements</h1>
+        <div class="content-text">
+            <p> Given another try, much would be improved. Most of the failures of this design stem from it being
+                designed for an
+                entirely different functionality, but being adapted to work as an HMI system. Doing so required
+                repurposing GPIO and extremely
+                low-speed SPI communication pins. While this works, it means the full-color functionality of the screen
+                had to be removed in favor
+                of using a color-inversion system with colored film to allow the screen refresh-rate to keep up with the
+                sensor input. Here is a list of potential improvements we brainstormed during our post-mortem meeting.</p>
+
+                <div style="padding-left:1em; padding-bottom: 1em;">
+                    <li>
+                        Change GPIO pins to hardware SPI pins to speed up serial communication with screen.
+                    </li>
+                    <li>
+                        Remove support hardware for 5v stepper login to minimize board size.
+                    </li>
+                    <li>
+                        Replace the screw terminals with the barrel jack provided in class.
+                    </li>
+                    <li>
+                        Integrate the shared unregulated power to a daisy-chain pin for ease of use.
+                    </li>
+                    <li>
+                        Relocate the ESP to the edge for ease of removal, and to minimize WIFI interference.
+                    </li>
+                </div>
+                
+                If we find time we might put in the extra 5% to make this project even cooler, but we have big plans for summer
+                projects that should keep us busy. I learned a lot designing this board, particularly regarding USB interfacing,
+                and it has definitely improved my design skills. I am one board design away from perfection, but I can save that 
+                for capstone.
+                
+        </div>
+    </content-section>
+
+    <h1 class="content-header"> Schematics and Support Materials </h1>
 
     <horizontal-content-view>
         <button class="horizontal-content-selection"
             onclick="toggleDropdown(this, 'dropdown1')">Microcontroller</button>
         <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown2')">Power Supply</button>
-        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown3')">Motor Driver</button>
+        <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown3')">SPI Display</button>
         <button class="horizontal-content-selection" onclick="toggleDropdown(this, 'dropdown4')">BOM / Power
             Budget</button>
     </horizontal-content-view>
@@ -66,18 +131,13 @@
 
     <div id="dropdown3" class="dropdown-content" style="display: none;">
         <div class="deployable-content-box">
-            <p class="content-header"> Motor Driver</p>
+            <p class="content-header"> SPI Display</p>
             <p class="content-text">
-                My board needs to interface with a 24v stepper motor, driven by an external driver. This driver requires
-                a 5v magnitude for the pulse, which cannot be provided by the 3.3v microcontroller. My solution is
-                to use MOSFETs with a trigger at 0.7v to activate the 5v pulse, which in turn drives the motor driver.
-                The original project design involved driving a stepper motor using these GPIO pins, but after being
-                moved to the new team my subsystem was repurposed to utilize
-                software-based SPI. This adaptation did not hinder the functionality of this subsystem, and was still
-                driven using the same hardware. While this was almost certainly
-                not necessary given the new requirements, the board was already manufactured and making modifications
-                would not have provided any improved functionality given the time
-                constraints.
+                My board needs to interface with an SPI display. This display can be run at either 3.3v or 5v.
+                Originally, we had it running on 5v using this MOSFET bus. Following a component failure in the 5v
+                regulator, I elected to bypass the 5v regulator and wire the 3.3v signal directly into the SPI chip.
+                Most of this page is irrelevant, as it worked in the final design,
+                but I decided to keep it here just in case, as it is present on the PCB.
             </p>
             <div class="zoomable-container">
                 <img class="zoomable-image" src="media/Hardware_Schematic/motor-system.png" alt="Hardware Diagram">
@@ -109,9 +169,13 @@
             <p class="content-text">
                 To ensure sufficient power flow from the supply to adequately power all required hardware, I have
                 generated this power budget showing the allocation required
-                to drive all necessary hardware. The screen has rather minor power draw, but to provide ample safety margin I elected to maintain the 
-                750mA fuse, so while the power is overspecced for the setup, it is a completely valid option for this setup.
+                to drive all necessary hardware. The screen has rather minor power draw, but to provide ample safety
+                margin I elected to maintain the
+                750mA fuse, so while the power is overspecced for the setup, it is a completely valid option for this
+                setup.
             </p>
+
+            
             <p class="content-text">
                 I have elected to only show components that actually have a notable power draw to minimize the work
                 required to streamline the document, especially given the quantity of individual components.
@@ -121,6 +185,13 @@
             <p class="content-text">
                 The output of my voltage regulator is 500mA at 3.3v. Which means that it is capable of powering all
                 hardware during peak output
+            </p>
+
+            <p class="content-text">
+                <h1> Estimating Power Needs </h1>
+                Thankfully, I overspecced my voltage regulator. This means that integrating the new screen, which had a higher power-draw than the original system requirements,
+                did not overstrain the system. During the design phase I had originally used a 500mA fuse, but elected to replace it with a 750mA fuse. This saved my system, and
+                exemplified why you include safety margins in designs.
             </p>
         </div>
     </div>

@@ -76,139 +76,16 @@
     <h3 class="contentParagraph"
         style="background-color: white; padding: 1.5vw; border-radius: 5px; font-size: 20px; display:flex; flex-direction: column;">
         <p style="font-size:150%; margin-top:0px;">
-            Message Types
+            Resources and Downloads
         </p>
-        We have various message types that need to be transmitted through this standard. The nature of the
-        header/footer system allows for dynamic message sizes. The types of messages
-        and lengths are listed below.
+        All required documentation is provided here to recreate this board and system functionality given the correct hardware. 
 
-        <div style="padding-bottom: 1vh;"></div>
+        <a href="/media/Downloads/314PersonalBoard (2-21-2025).zip" download>Download the Altium Designer File</a>
 
-        All messages are also recieved by the wifi system for live-display to the operator via the
-        web-interface. All messages can also be spoofed by the web-interface to overwrite command inputs by
-        the user.
+        <a href="/media/Downloads/main.py" download>Download the Micropython File</a>
 
-        <div style="padding-bottom: 2vw;"></div>
-
-
-        Each subsystem address is laid out below:
-
-        <div style="padding-bottom: 2vh;"></div>
-
-        <div style="margin:auto; margin-left: 1vw; ">
-            <table>
-                <thead>
-                    <th class="message-header"> Member</th>
-                    <th class="message-header"> Subsystem</th>
-                    <th class="message-header"> Address</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> Dominick Trusko</td>
-                        <td> Secondary HMI</td>
-                        <td> D</td>
-                    </tr>
-                    <tr>
-                        <td> Kirk Volin</td>
-                        <td> MQTT</td>
-                        <td> K</td>
-                    </tr>
-                    <tr>
-                        <td> Evan Skinner</td>
-                        <td> Sensors</td>
-                        <td> E</td>
-                    </tr>
-                    <tr>
-                        <td> Hunter Hassebroek</td>
-                        <td> Primary HMI</td>
-                        <td> H</td>
-                    </tr>
-                    <tr>
-                        <td> Noah </td>
-                        <td> Actuator </td>
-                        <td> N </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div style="padding-bottom: 4vh;"></div>
-
-        <div style="font-size: 1.7em;"> Example Key: </div>
-
-        <div style="padding-bottom: 1vh;"></div>
-
-        <span> <strong class="common-message">BLUE</strong> : All common message components (IE Headers/Footers)
-        </span>
-
-        <span> <strong class="self-identifier">RED</strong> : The local address for my subsystem
-        </span>
-
-        <div style="padding-bottom: 1vh;"></div>
-
-        <span>Including the headers/footers are <u>not required for the assignment</u>, but including them will provide
-            better reference information for both myself and my team during production. Therefor they will remain in
-            this document</span>
-
-        <div style="padding-bottom: 1vh;"></div>
-
-        <span>
-            Due to my late addition to the team, all that was required for my side was to handle transmission and reception of a singular message. Dissapointing,
-            but given the two-day time constraint it was needed to ensure functionality.
-        </span>
-
-        <div style="padding-bottom: 2vh;"></div>
-
-        <div style="padding: auto; align-content:center; width: 90vw; padding:0; margin:0;">
-            <table>
-                <thead>
-                    <div style="border-color: black; border-width: 1px;">
-                        <th class="message-header"> TX/RX </th>
-                        <th class="message-header"> Message Name </th>
-                        <th class="message-header"> Data type </th>
-                        <th class="message-header"> Range </th>
-                        <th class="message-header"> Size </th>
-                        <th class="message-header"> Description </th>
-                        <th class="message-header"> Example </th>
-                    </div>
-
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td class="message-content"> TX </td>
-                        <td class="message-content"> Display Mode </td>
-                        <td class="message-content"> uint_8 </td>
-                        <td class="message-content"> [0-1] </td>
-                        <td class="message-content"> 8 Bits [56 Bits Total] </td>
-                        <td class="message-content"> Notifies the MQTT system the current display mode. </td>
-                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
-                            <p class="message-closespace">
-                                <span class="self-identifier">[0x6]</span>
-                                [0x58]
-                                [0xF3]
-                            </p>
-                            <strong class="common-message">[0x59][0x42]</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="message-content"> RX </td>
-                        <td class="message-content"> Current Speed </td>
-                        <td class="message-content"> uint_8 </td>
-                        <td class="message-content"> [0-100] </td>
-                        <td class="message-content"> 8 Bits [56 Bits Total] </td>
-                        <td class="message-content"> Recieves the ball speed, calculated by the sensor subsystem </td>
-                        <td class="message-content"> <strong class="common-message">[0x41][0x5a]</strong>
-                            <p class="message-closespace">
-                                <span class="self-identifier">[0x6]</span>
-                                [0x58]
-                                [0xF5]
-                            </p>
-                            <strong class="common-message">[0x59][0x42]</strong>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <a href="/media/Downloads/DtruskoGBR.zip" download>Download the Gerber/Drill Files</a>
+        
         </div>
     </h3>
 </body>
