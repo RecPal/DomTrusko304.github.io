@@ -19,7 +19,7 @@
             color: white;
             margin: 20px;
             font-weight: bolder;
-            margin:0px;
+            margin: 0px;
         }
 
         /* Header formatting */
@@ -62,7 +62,7 @@
 
         /* Paragraph Styling */
         .in-content-text {
-            color:black;
+            color: black;
         }
 
         /* Table Styling */
@@ -199,15 +199,19 @@
 
     <h1>Subsystem functionality</h1>
 
-    <pt> 
-        Our team's project is a magnetic accelerator, using coils and motor drivers to accelerate a magnetic ball bearing and provide
-        perpetual motion. My system's purpose was to drive a screen providing data to the operator showing which sensor has detected the ball and it's estimated
-        position. To accomplish this, it required converting most of my original motor driver system to a software SPI driven system. I am doing this 
-        retroactively, so the hardware selection for the screen will not use selection criteria, as I had to use what was on-hand to complete the conversion
+    <pt>
+        Our team's project is a magnetic accelerator, using coils and motor drivers to accelerate a magnetic ball
+        bearing and provide
+        perpetual motion. My system's purpose was to drive a screen providing data to the operator showing which sensor
+        has detected the ball and it's estimated
+        position. To accomplish this, it required converting most of my original motor driver system to a software SPI
+        driven system. I am doing this
+        retroactively, so the hardware selection for the screen will not use selection criteria, as I had to use what
+        was on-hand to complete the conversion
         after the rapid team pivot near the end of the project.
     </pt>
 
-<hr>
+    <hr>
 
     <h1>ESP Pin Diagram</h1>
     <pt>
@@ -225,7 +229,7 @@
 
     </pt>
 
-<hr>
+    <hr>
 
     <h1>Major Hardware Selection</h1>
 
@@ -236,7 +240,8 @@
 
         <div id="Microcontroller" class="hidden">
 
-            <p class="in-content-text">For microcontroller selection, I am prioritizing familiarity and ease of programming. I consider
+            <p class="in-content-text">For microcontroller selection, I am prioritizing familiarity and ease of
+                programming. I consider
                 myself
                 rather skilled
                 at C, so utilizing a microcontroller that supports C libraries gives the widest bredth of
@@ -382,7 +387,8 @@
 
         <div id="Power Regulator" class="hidden">
 
-            <p class="in-content-text">For power regulator selection, I am prioritizing ease of use and minimal support components.
+            <p class="in-content-text">For power regulator selection, I am prioritizing ease of use and minimal support
+                components.
                 This will maximize the time I have to work on more interesting subsystems, and reduce the risk
                 of component failure. Ideally a fixed-output regulator for ease-of-use. It also must be capable of
                 producing the power required to drive the microcontroller and motor driver logic circuit.
@@ -511,19 +517,16 @@
     <!-- Motor Driver Dropdown -->
     <div class="dropdown-container" id="motordriverContainer">
 
-        <div class="dropdown" onclick="toggleTable('Motordriver')">Motor Driver Selection</div>
+        <div class="dropdown" onclick="toggleTable('Motordriver')">HMI Screen</div>
 
         <div id="Motordriver" class="hidden">
 
-            <p class="in-content-text">For motor driver selection, I appear to be severely limited. The primary reason being that many of these
-                motor drivers come
-                pre-mounted onto daughter-boards, which require justification to use (As per the project requirements).
-                Ideally the control
-                logic is at the same voltage as the microcontroller. It also requires control over a serial
-                communication interface, which
-                doesn't seem like a difficult task, but it is actually rather difficult. Many allow tuning properties,
-                such as acceleration
-                speed over a serial interface, but operate using a pulse-step system.
+            <p class="in-content-text">I originally designed my board around using a stepper motor driver, after
+                switching teams I have been placed
+                on the human-machine interface. I was given another member's extra screen due to the time constraints
+                (Had to adapt my project in 2 days), so I did not do comparison research for
+                the component selection. For a second iteration, I definitely would, as the flaws of the screen made
+                themselves known instantly.
             </p>
 
             <table>
@@ -538,78 +541,30 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>TB6600</td>
-                        <td><img src="media/Component_Selection/TB6600.png" alt="MotorDriver" class="small-image">
+                        <td>ST7789 EYESPI</td>
+                        <td><img src="https://cdn-shop.adafruit.com/970x728/4311-08.jpg" alt="MotorDriver"
+                                class="small-image">
                         </td>
                         <td>
                             <ul>
                                 <li>Relatively-inexpensive</li>
                                 <li>Very well documented, used in many hobbiest projects</li>
-                                <li>External with it's own dedicated heatsink, minimizing complexity</li>
+                                <li>Can be controlled with either 3.3v or 5v logic, minimizing redesign work</li>
                             </ul>
                         </td>
                         <td>
                             <ul>
                                 <li>Definitely overkill for the given application</li>
-                                <li>Requires converting 3.3v signals to 5v signals to control digital logic</li>
+                                <li>Tendency to separate screen from board under continuous heat application</li>
                             </ul>
                         </td>
                         <td>
-                            <a href="https://www.digikey.com/en/products/detail/stmicroelectronics/L6470H/2682927">
+                            <a href="https://www.adafruit.com/product/4311">
                                 <div class="digikey-link"></div>
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>EMC2301-1-ACZL-TR</td>
-                        <td><img src="media/Component_Selection/EMC2301.bmp" alt="MC Motor Driver" class="small-image">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Very cheap </li>
-                                <li>Easy interfacing over PWM</li>
-                                <li>Configuration done over serial</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Impercise position, as it does not operate in steps</li>
-                                <li>Designed to drive fan motors, which will take adaptation to utilize for my
-                                    requirements</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a
-                                href="https://www.digikey.com/en/products/detail/microchip-technology/EMC2301-1-ACZL-TR/3872090">
-                                <div class="digikey-link"></div>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>A3908EEETR-T</td>
-                        <td><img src="media/Component_Selection/A3908EEETR.bmp" alt="Allegro Motor Driver"
-                                class="small-image">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Very cheap </li>
-                                <li>Operates at microcontroller voltage</li>
-                                <li>Configuration over SPI</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Requires reflow oven to solder </li>
-                                <li>Low load capabilities, which may be an issue depending on motor</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a
-                                href="https://www.digikey.com/en/products/detail/allegro-microsystems/A3908EEETR-T/1991942">
-                                <div class="digikey-link"></div>
-                            </a>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
 
@@ -626,146 +581,16 @@
                 <tbody>
                     <tr>
                         <td>TB6600</td>
-                        <td><img src="media/Component_Selection/TB6600.png" alt="MotorDriver" class="small-image">
-                        </td>
-                        <td>
-                            This motor driver is being chosen not necessarily due to it being the best option, but due to it being available
-                            and regularly used by hobbyists. It will save time on integration using existing python libraries, and will 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Motor Dropdown -->
-    <div class="dropdown-container-alt" id="motorContainer">
-
-        <div class="dropdown" onclick="toggleTable('Motor')">Motor Selection</div>
-
-        <div id="Motor" class="hidden">
-
-            <p class="in-content-text">For motor selection I am only looking for a few things. It needs to be easy to connect 3d printed
-                hardware
-                to, as that is the intended interface, and it needs to be compatable with the selected motor driver,
-                which
-                is actually very easy since the motor driver I selected is suprisingly dynamic and has plenty of tunable
-                settings.
-            </p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Image</th>
-                        <th>Advantages</th>
-                        <th>Disadvantages</th>
-                        <th>Hyperlink</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>ROB-09238</td>
-                        <td><img src="media/Component_Selection/ROB-09238.bmp" alt="ROB Stepper" class="small-image">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Reliable</li>
-                                <li>Used extensively for personal projects</li>
-                                <li>More than enough torque for my application</li>
-                                <li>Uses a NEMA 17 mount, so I can purchase the mount pre-manufactured</li>
-                                <li>Runs off 12V, which matches the unregulated power-input</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Designed for hobbyists, seems to have a relatively high manufacturing failure rate
-                                </li>
-                                <li>Round shaft, so set screw will be required to attach to hardware </li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="https://www.digikey.com/en/products/detail/sparkfun-electronics/ROB-09238/5318747">
-                                <div class="digikey-link"></div>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>MIKROE-1530</td>
-                        <td><img src="media/Component_Selection/MIKROE.bmp" alt="MikroElektronika Motor"
+                        <td><img src="https://cdn-shop.adafruit.com/970x728/4311-08.jpg" alt="MotorDriver"
                                 class="small-image">
                         </td>
                         <td>
-                            <ul>
-                                <li>Flattened-shaft axle making external mounting trivial</li>
-                                <li>Small form-factor allows space saving</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Runs at 5v, meaning another voltage regulator would be required</li>
-                                <li>Relatively low torque may restrict other design considerations</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="https://www.digikey.com/en/products/detail/mikroelektronika/MIKROE-1530/5724295">
-                                <div class="digikey-link"></div>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adafruit 324</td>
-                        <td><img src="media/Component_Selection/AdafruitMotor.bmp" alt="Adafruit Motor"
-                                class="small-image">
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Very popular for hobbist applications, plenty of online support </li>
-                                <li>Reliable, often used for 3d printers</li>
-                                <li>I already own plenty, which drives down manufacturing cost</li>
-                                <li>Flatted shaft makes hardware mounting fairly easy</li>
-                                <li>Requires 12v, which is the unregulated power supply input</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <li>Larger than some alternatives</li>
-                                <li>More expensive than some alternatives</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="https://www.digikey.com/en/products/detail/adafruit-industries-llc/324/5022791">
-                                <div class="digikey-link"></div>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3> My Selection </h3>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Component</th>
-                        <th>Image</th>
-                        <th>Justification</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Adafruit 324</td>
-                        <td><img src="media/Component_Selection/AdafruitMotor.bmp" alt="Adafruit Motor"
-                                class="small-image"></td>
-                        <td>Component familiarity combined with access to years of online discussion makes this the
-                            superior choice. Already owning the part helps as well, as it negates the price downside.
-                            The
-                            keyed axle makes mounting it to the 3d printed components a breeze. The only comparable
-                            option
-                            would be the ROB-09238, but familiarity has immense value to me, especially given the
-                            complexity
-                            of the motor driver selected. I would rather the motor itself be the easiest part to
-                            integrate.
+                            This screen was not selected because its the best, but because it was available. I was given
+                            only two days to hard-pivot my project
+                            to a new functionality, which limited my options to either the class display or this
+                            alternative display. My teammate had already learned the ins and outs
+                            of utilizing this hardware, so it expedited the learning process and allowed me to complete
+                            the board and get the system fully integrated within 12 hours.
                         </td>
                     </tr>
                 </tbody>
